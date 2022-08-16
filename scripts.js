@@ -1,0 +1,1 @@
+let video = document.getElementById("bg_home");
