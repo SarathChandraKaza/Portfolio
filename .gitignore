@@ -1,2 +1,4 @@
 *.vsidx
 *.sqlite
+*.json
+/.vs
