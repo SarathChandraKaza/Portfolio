@@ -123,7 +123,7 @@
         <!-- Short Films -->
 
           <!-- 23. Kidnapped - Short Film -->
-          <div class="col-lg-4 col-md-6 portfolio-item filter-featured filter-short">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-featured filter-short" data-featured-id="kidnappedposter.png">
             <div class="portfolio-wrap">
               <img src="img\kidnappedposter.png" class="img-fluid" alt="">
               <div class="portfolio-links">
@@ -134,7 +134,7 @@
           </div>
 
           <!-- 15. Apaartham - Short Film -->
-          <div class="col-lg-4 col-md-6 portfolio-item filter-featured filter-short">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-featured filter-short" data-featured-id="15.apaarthamposter.png">
             <div class="portfolio-wrap">
               <img src="img\15.apaarthamposter.png" class="img-fluid" alt="">
               <div class="portfolio-links">
@@ -145,7 +145,7 @@
           </div>
 
           <!-- 17. Split - Short Film -->
-          <div class="col-lg-4 col-md-6 portfolio-item filter-featured filter-short">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-featured filter-short" data-featured-id="17.splitposter.png">
             <div class="portfolio-wrap">
               <img src="img/17.splitposter.png" class="img-fluid" alt="">
               <div class="portfolio-links">
@@ -180,7 +180,7 @@
         <!-- Micro Films -->
 
           <!-- 18. The Party - Micro Film -->
-          <div class="col-lg-4 col-md-6 portfolio-item filter-featured filter-micro">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-featured filter-micro" data-featured-id="18.theparty_updatedposter.png">
             <div class="portfolio-wrap">
               <img src="img/18.theparty_updatedposter.png" class="img-fluid" alt="">
               <div class="portfolio-links">
@@ -202,7 +202,7 @@
           </div>
 
           <!-- 12. Together - Micro Film -->
-          <div class="col-lg-4 col-md-6 portfolio-item filter-featured filter-micro">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-featured filter-micro" data-featured-id="12.togetherposter.png">
             <div class="portfolio-wrap">
               <img src="img\12.togetherposter.png" class="img-fluid" alt="">
               <div class="portfolio-links">
@@ -283,7 +283,7 @@
         <!-- Audio Films -->
 
           <!-- 8. Happy New Year - Audio Film -->
-          <div class="col-lg-4 col-md-6 portfolio-item filter-featured filter-audio">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-audio" data-featured-id="8.happynewyearposter.png">
             <div class="portfolio-wrap">
               <img src="img\8.happynewyearposter.png" class="img-fluid" alt="">
               <div class="portfolio-links">
@@ -295,7 +295,7 @@
 
          <!-- Verticals -->
           <!-- Annayya Thammudu Oo Tamil Amayi Vertical Series Ep 1 -->
-          <div class="col-lg-4 col-md-6 portfolio-item filter-featured filter-verticals">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-featured filter-verticals" data-featured-id="ATT_EP1_POSTER.png">
             <div class="portfolio-wrap">
               <img src="img\ATT_EP1_POSTER.png" class="img-fluid" alt="">
                 <div class="portfolio-links">
@@ -307,7 +307,7 @@
           
 
           <!-- Annayya Thammudu Oo Tamil Amayi Vertical Series ep 2 -->
-          <div class="col-lg-4 col-md-6 portfolio-item filter-featured filter-verticals">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-featured filter-verticals" data-featured-id="ATT_EP2_POSTER.png">
             <div class="portfolio-wrap">
               <img src="img\ATT_EP2_POSTER.png" class="img-fluid" alt="">
                 <div class="portfolio-links">
@@ -319,7 +319,7 @@
          
 
           <!-- Annayya Thammudu Oo Tamil Amayi Vertical Series ep 3 -->
-          <div class="col-lg-4 col-md-6 portfolio-item filter-featured filter-verticals">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-featured filter-verticals" data-featured-id="ATT_EP3_POSTER.png">
             <div class="portfolio-wrap">
               <img src="img\ATT_EP3_POSTER.png" class="img-fluid" alt="">
                 <div class="portfolio-links">
@@ -331,7 +331,7 @@
          
 
           <!-- Pan India Shaadi - Vertical Film -->
-           <div class="col-lg-4 col-md-6 portfolio-item filter-featured filter-verticals">
+           <div class="col-lg-4 col-md-6 portfolio-item filter-featured filter-verticals" data-featured-id="PAN_INDIA_SHAADI_POSTER.png">
             <div class="portfolio-wrap">
               <img src="img\PAN_INDIA_SHAADI_POSTER.png" class="img-fluid" alt="">
                 <div class="portfolio-links">
@@ -678,6 +678,62 @@
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
+
+  <!--
+    FEATURED PORTFOLIO ORDER
+    Change the order of these filenames to change the order in the Featured filter.
+    The first filename appears first. Keep each filename exactly as shown.
+    Any Featured item not listed here will automatically be appended at the end.
+  -->
+  <script>
+        const featuredOrder = [
+      "ATT_EP1_POSTER.png", // Annayya Thammudu Oo Tamil Ammayi - Episode 1
+      "ATT_EP2_POSTER.png", // Annayya Thammudu Oo Tamil Ammayi - Episode 2
+      "ATT_EP3_POSTER.png", // Annayya Thammudu Oo Tamil Ammayi - Episode 3
+      "kidnappedposter.png", // Kidnapped
+      "PAN_INDIA_SHAADI_POSTER.png", // Pan India Shaadi
+      "17.splitposter.png", // Split
+      "18.theparty_updatedposter.png", // The Party
+      "15.apaarthamposter.png", // Apaartham
+      "12.togetherposter.png", // Together
+    ];
+
+    (function arrangeFeaturedCards() {
+      const container = document.querySelector(".portfolio-container");
+      if (!container) return;
+
+      const featuredCards = Array.from(
+        container.querySelectorAll(".portfolio-item.filter-featured")
+      );
+
+      const cardById = new Map(
+        featuredCards.map(card => [card.dataset.featuredId, card])
+      );
+
+      // Follow the array order; append any newly added Featured cards automatically.
+      const orderedCards = featuredOrder
+        .map(filename => cardById.get(filename))
+        .filter(Boolean);
+
+      featuredCards.forEach(card => {
+        if (!orderedCards.includes(card)) orderedCards.push(card);
+      });
+
+      // Reorder the Featured cards in the DOM before main.js initializes Isotope.
+      // This preserves the positions of all non-Featured cards.
+      const originalChildren = Array.from(container.children);
+      let featuredIndex = 0;
+
+      originalChildren.forEach((element, index) => {
+        if (element.classList.contains("filter-featured")) {
+          originalChildren[index] = orderedCards[featuredIndex++];
+        }
+      });
+
+      originalChildren.forEach(element => container.appendChild(element));
+    })();
+  </script>
+
   <script src="main.js"></script>
 
 </body>
